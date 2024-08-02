@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "diretorias",
+  "info": {
+    "singularName": "diretoria",
+    "pluralName": "diretorias",
+    "displayName": "Diretoria",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "members": {
+      "displayName": "diretoria_card",
+      "type": "component",
+      "repeatable": true,
+      "component": "section.diretoria-card"
+    },
+    "resume": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tenders",
+  "info": {
+    "singularName": "tender",
+    "pluralName": "tenders",
+    "displayName": "Tender",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {}
+    },
+    "tender_type": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tender-type.tender-type",
+      "inversedBy": "tenders"
+    },
+    "files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "pluginOptions": {}
+    },
+    "opening_date": {
+      "type": "date",
+      "pluginOptions": {}
+    },
+    "description": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    },
+    "closing_date": {
+      "type": "date"
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "tender.status"
+    },
+    "process_number": {
+      "type": "string"
+    }
+  }
+}

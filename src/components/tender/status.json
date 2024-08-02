@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_tender_statuses",
+  "info": {
+    "displayName": "status",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "date": {
+      "type": "date"
+    },
+    "name": {
+      "type": "enumeration",
+      "enum": [
+        "Aberta",
+        "Julgamento",
+        "Finalizada",
+        "Cancelada"
+      ]
+    }
+  }
+}
