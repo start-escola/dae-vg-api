@@ -2956,6 +2956,15 @@ axios@1.6.0:
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
+axios@^1.4.0:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.2.tgz#b625db8a7051fbea61c35a3cbb3a1daa7b9c7621"
+  integrity sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==
+  dependencies:
+    follow-redirects "^1.15.6"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
+
 b4a@^1.6.4:
   version "1.6.6"
   resolved "https://registry.yarnpkg.com/b4a/-/b4a-1.6.6.tgz#a4cc349a3851987c3c4ac2d7785c18744f6da9ba"
@@ -8975,6 +8984,13 @@ statuses@2.0.1, statuses@^2.0.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
+
+strapi-provider-email-brevo@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/strapi-provider-email-brevo/-/strapi-provider-email-brevo-1.0.4.tgz#fe1e4d1f52fa34397c9a929e42c746327092ef19"
+  integrity sha512-eVRaWg6fD5NcoGifh4ZGYTgGk24VbJjrJ7dIAh9wzunURyzsYeD5mcHJknICRSMwUfKHEWGt2CoUuMG2tXXzpg==
+  dependencies:
+    axios "^1.4.0"
 
 stream-chain@2.2.5, stream-chain@^2.2.5:
   version "2.2.5"
