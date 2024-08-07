@@ -925,6 +925,7 @@ export interface ApiTenderTender extends Schema.CollectionType {
     closing_date: Attribute.Date;
     status: Attribute.Component<'tender.status', true>;
     process_number: Attribute.String;
+    last_status: Attribute.Component<'tender.status'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

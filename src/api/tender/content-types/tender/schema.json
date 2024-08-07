@@ -56,6 +56,11 @@
     },
     "process_number": {
       "type": "string"
+    },
+    "last_status": {
+      "type": "component",
+      "repeatable": false,
+      "component": "tender.status"
     }
   }
 }
