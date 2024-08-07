@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tender_types",
+  "info": {
+    "singularName": "tender-type",
+    "pluralName": "tender-types",
+    "displayName": "Tender_type",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "tenders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tender.tender",
+      "mappedBy": "tender_type"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    }
+  }
+}

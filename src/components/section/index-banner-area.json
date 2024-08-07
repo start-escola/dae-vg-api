@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_section_index_banner_areas",
+  "info": {
+    "displayName": "index_banner_area",
+    "icon": "alien",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "banners": {
+      "displayName": "index_banner_card",
+      "type": "component",
+      "repeatable": true,
+      "component": "section.index-banner-card"
+    }
+  }
+}
