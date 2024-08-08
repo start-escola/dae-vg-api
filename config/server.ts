@@ -7,5 +7,5 @@ export default ({ env }) => ({
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
-  url: env('BASE_URL', "http://localhost:443/cms"),
+  url: env('BASE_URL', "http://localhost:1337"),
 });
