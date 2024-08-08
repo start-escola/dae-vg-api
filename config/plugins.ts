@@ -17,9 +17,5 @@ export default ({ env }) => ({
         defaultReplyTo: "no-reply@varzeagrande.mt.gov.br",
       },
     },
-    ckeditor: {
-      enabled: true,
-      resolve: "./src/plugins/strapi-plugin-ckeditor",
-    },
   },
 });

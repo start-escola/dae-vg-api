@@ -10,7 +10,6 @@
     "strapi": "strapi",
     "deploy": "strapi deploy"
   },
-  "workspaces": ["./src/plugins/strapi-plugin-ckeditor"],
   "dependencies": {
     "@ckeditor/strapi-plugin-ckeditor": "^0.0.13",
     "@strapi/plugin-cloud": "4.25.0",
