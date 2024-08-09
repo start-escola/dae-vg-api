@@ -61,6 +61,9 @@
       "type": "component",
       "repeatable": false,
       "component": "tender.status"
+    },
+    "realization": {
+      "type": "date"
     }
   }
 }
