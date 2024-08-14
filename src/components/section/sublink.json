@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_section_sublinks",
+  "info": {
+    "displayName": "sublink"
+  },
+  "options": {},
+  "attributes": {
+    "href": {
+      "type": "string"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

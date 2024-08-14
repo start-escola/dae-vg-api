@@ -1,0 +1,43 @@
+{
+  "kind": "singleType",
+  "collectionName": "agua_e_esgotos",
+  "info": {
+    "singularName": "agua-e-esgoto",
+    "pluralName": "agua-e-esgotos",
+    "displayName": "Agua e Esgoto",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "agua": {
+      "type": "text"
+    },
+    "esgoto": {
+      "type": "text"
+    },
+    "relacao_etes": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "mapa": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

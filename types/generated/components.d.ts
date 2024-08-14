@@ -56,6 +56,20 @@ export interface SectionIndexBannerCard extends Schema.Component {
   };
 }
 
+export interface SectionLink extends Schema.Component {
+  collectionName: 'components_section_links';
+  info: {
+    displayName: 'link';
+    icon: 'alien';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    route: Attribute.String;
+    sublink: Attribute.Component<'section.sublink', true>;
+  };
+}
+
 export interface SectionPagetitle extends Schema.Component {
   collectionName: 'components_section_pagetitles';
   info: {
@@ -65,6 +79,18 @@ export interface SectionPagetitle extends Schema.Component {
   attributes: {
     title: Attribute.String;
     description: Attribute.Text;
+  };
+}
+
+export interface SectionSublink extends Schema.Component {
+  collectionName: 'components_section_sublinks';
+  info: {
+    displayName: 'sublink';
+  };
+  attributes: {
+    href: Attribute.String;
+    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Attribute.String;
   };
 }
 
@@ -89,7 +115,9 @@ declare module '@strapi/types' {
       'section.diretoria-card': SectionDiretoriaCard;
       'section.index-banner-area': SectionIndexBannerArea;
       'section.index-banner-card': SectionIndexBannerCard;
+      'section.link': SectionLink;
       'section.pagetitle': SectionPagetitle;
+      'section.sublink': SectionSublink;
       'tender.status': TenderStatus;
     }
   }

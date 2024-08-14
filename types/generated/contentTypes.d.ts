@@ -840,6 +840,40 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
   };
 }
 
+export interface ApiAguaEEsgotoAguaEEsgoto extends Schema.SingleType {
+  collectionName: 'agua_e_esgotos';
+  info: {
+    singularName: 'agua-e-esgoto';
+    pluralName: 'agua-e-esgotos';
+    displayName: 'Agua e Esgoto';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    agua: Attribute.Text;
+    esgoto: Attribute.Text;
+    relacao_etes: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    mapa: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::agua-e-esgoto.agua-e-esgoto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::agua-e-esgoto.agua-e-esgoto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiContestContest extends Schema.CollectionType {
   collectionName: 'contests';
   info: {
@@ -1011,6 +1045,39 @@ export interface ApiNewNew extends Schema.CollectionType {
   };
 }
 
+export interface ApiPortalDaTransparenciaPortalDaTransparencia
+  extends Schema.SingleType {
+  collectionName: 'portal_da_transparencias';
+  info: {
+    singularName: 'portal-da-transparencia';
+    pluralName: 'portal-da-transparencias';
+    displayName: 'Portal da transpar\u00EAncia';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    resume: Attribute.Text;
+    link: Attribute.Component<'section.link', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::portal-da-transparencia.portal-da-transparencia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::portal-da-transparencia.portal-da-transparencia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTenderTender extends Schema.CollectionType {
   collectionName: 'tenders';
   info: {
@@ -1118,11 +1185,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::about-us.about-us': ApiAboutUsAboutUs;
+      'api::agua-e-esgoto.agua-e-esgoto': ApiAguaEEsgotoAguaEEsgoto;
       'api::contest.contest': ApiContestContest;
       'api::diretoria.diretoria': ApiDiretoriaDiretoria;
       'api::home.home': ApiHomeHome;
       'api::internal-control.internal-control': ApiInternalControlInternalControl;
       'api::new.new': ApiNewNew;
+      'api::portal-da-transparencia.portal-da-transparencia': ApiPortalDaTransparenciaPortalDaTransparencia;
       'api::tender.tender': ApiTenderTender;
       'api::tender-type.tender-type': ApiTenderTypeTenderType;
     }

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_section_links",
+  "info": {
+    "displayName": "link",
+    "icon": "alien",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "route": {
+      "type": "string"
+    },
+    "sublink": {
+      "displayName": "sublink",
+      "type": "component",
+      "repeatable": true,
+      "component": "section.sublink"
+    }
+  }
+}
