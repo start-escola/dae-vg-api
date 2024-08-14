@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "internal_controls",
+  "info": {
+    "singularName": "internal-control",
+    "pluralName": "internal-controls",
+    "displayName": "Controle Interno"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    },
+    "files": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

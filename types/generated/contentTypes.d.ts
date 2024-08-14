@@ -840,6 +840,49 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
   };
 }
 
+export interface ApiContestContest extends Schema.CollectionType {
+  collectionName: 'contests';
+  info: {
+    singularName: 'contest';
+    pluralName: 'contests';
+    displayName: 'Concursos';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    status: Attribute.Enumeration<['Aberto', 'Conclu\u00EDdo']>;
+    files: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    realization: Attribute.Date;
+    process_number: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contest.contest',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contest.contest',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDiretoriaDiretoria extends Schema.SingleType {
   collectionName: 'diretorias';
   info: {
@@ -894,12 +937,86 @@ export interface ApiHomeHome extends Schema.SingleType {
   };
 }
 
+export interface ApiInternalControlInternalControl
+  extends Schema.CollectionType {
+  collectionName: 'internal_controls';
+  info: {
+    singularName: 'internal-control';
+    pluralName: 'internal-controls';
+    displayName: 'Controle Interno';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    files: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::internal-control.internal-control',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::internal-control.internal-control',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNewNew extends Schema.CollectionType {
+  collectionName: 'news';
+  info: {
+    singularName: 'new';
+    pluralName: 'news';
+    displayName: 'Not\u00EDcias';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    main_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    short_description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTenderTender extends Schema.CollectionType {
   collectionName: 'tenders';
   info: {
     singularName: 'tender';
     pluralName: 'tenders';
-    displayName: 'Tender';
+    displayName: 'Licita\u00E7\u00F5es';
     description: '';
   };
   options: {
@@ -950,7 +1067,7 @@ export interface ApiTenderTypeTenderType extends Schema.CollectionType {
   info: {
     singularName: 'tender-type';
     pluralName: 'tender-types';
-    displayName: 'Tender_type';
+    displayName: 'Tipos de Licita\u00E7\u00F5es';
     description: '';
   };
   options: {
@@ -1001,8 +1118,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::about-us.about-us': ApiAboutUsAboutUs;
+      'api::contest.contest': ApiContestContest;
       'api::diretoria.diretoria': ApiDiretoriaDiretoria;
       'api::home.home': ApiHomeHome;
+      'api::internal-control.internal-control': ApiInternalControlInternalControl;
+      'api::new.new': ApiNewNew;
       'api::tender.tender': ApiTenderTender;
       'api::tender-type.tender-type': ApiTenderTypeTenderType;
     }
