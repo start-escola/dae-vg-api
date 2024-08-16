@@ -948,6 +948,37 @@ export interface ApiDiretoriaDiretoria extends Schema.SingleType {
   };
 }
 
+export interface ApiGalleryGallery extends Schema.SingleType {
+  collectionName: 'galleries';
+  info: {
+    singularName: 'gallery';
+    pluralName: 'galleries';
+    displayName: 'galeria';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    conteudo: Attribute.Component<'section.img', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::gallery.gallery',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::gallery.gallery',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomeHome extends Schema.SingleType {
   collectionName: 'homes';
   info: {
@@ -1188,6 +1219,7 @@ declare module '@strapi/types' {
       'api::agua-e-esgoto.agua-e-esgoto': ApiAguaEEsgotoAguaEEsgoto;
       'api::contest.contest': ApiContestContest;
       'api::diretoria.diretoria': ApiDiretoriaDiretoria;
+      'api::gallery.gallery': ApiGalleryGallery;
       'api::home.home': ApiHomeHome;
       'api::internal-control.internal-control': ApiInternalControlInternalControl;
       'api::new.new': ApiNewNew;

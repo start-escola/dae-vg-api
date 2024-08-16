@@ -24,6 +24,18 @@ export interface SectionDiretoriaCard extends Schema.Component {
   };
 }
 
+export interface SectionImg extends Schema.Component {
+  collectionName: 'components_section_imgs';
+  info: {
+    displayName: 'img';
+    description: '';
+  };
+  attributes: {
+    midia: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Attribute.String;
+  };
+}
+
 export interface SectionIndexBannerArea extends Schema.Component {
   collectionName: 'components_section_index_banner_areas';
   info: {
@@ -113,6 +125,7 @@ declare module '@strapi/types' {
     export interface Components {
       'section.about-us-values': SectionAboutUsValues;
       'section.diretoria-card': SectionDiretoriaCard;
+      'section.img': SectionImg;
       'section.index-banner-area': SectionIndexBannerArea;
       'section.index-banner-card': SectionIndexBannerCard;
       'section.link': SectionLink;
