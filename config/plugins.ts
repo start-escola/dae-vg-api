@@ -2,7 +2,7 @@ export default ({ env }) => ({
   "users-permissions": {
     config: {
       register: {
-        allowedFields: ["cpf", "fullname"],
+        allowedFields: ["cpf", "fullname", "cnpj"],
       },
     },
   },

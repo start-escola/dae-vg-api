@@ -60,7 +60,7 @@ export default {
         .findOne({
           where: {
             provider,
-            $or: [{ email: identifier.toLowerCase() }, { cpf: identifier }],
+            $or: [{ email: identifier.toLowerCase() }, { cpf: identifier }, { cnpj: identifier }],
           },
         });
 

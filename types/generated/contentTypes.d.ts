@@ -703,11 +703,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 3;
       }>;
-    fullname: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 3;
-      }>;
     email: Attribute.Email &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
@@ -728,12 +723,22 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    cpf: Attribute.String &
+    fullname: Attribute.String &
       Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 3;
+      }>;
+    cpf: Attribute.String &
       Attribute.Unique &
       Attribute.SetMinMaxLength<{
         minLength: 11;
         maxLength: 11;
+      }>;
+    cnpj: Attribute.String &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 14;
+        maxLength: 14;
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

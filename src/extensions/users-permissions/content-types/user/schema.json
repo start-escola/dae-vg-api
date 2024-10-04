@@ -19,11 +19,6 @@
       "configurable": false,
       "required": true
     },
-    "fullname": {
-      "type": "string",
-      "minLength": 3,
-      "required": true
-    },
     "email": {
       "type": "email",
       "minLength": 6,
@@ -70,12 +65,22 @@
       "inversedBy": "users",
       "configurable": false
     },
+    "fullname": {
+      "type": "string",
+      "minLength": 3,
+      "required": true
+    },
     "cpf": {
       "type": "string",
       "unique": true,
       "minLength": 11,
-      "maxLength": 11,
-      "required": true
+      "maxLength": 11
+    },
+    "cnpj": {
+      "type": "string",
+      "minLength": 14,
+      "maxLength": 14,
+      "unique": true
     }
   }
 }
