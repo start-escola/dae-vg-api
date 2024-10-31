@@ -81,6 +81,12 @@
       "minLength": 14,
       "maxLength": 14,
       "unique": true
+    },
+    "warnings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::warning.warning",
+      "mappedBy": "visualizations"
     }
   }
 }

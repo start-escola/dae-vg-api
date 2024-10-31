@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "warnings",
+  "info": {
+    "singularName": "warning",
+    "pluralName": "warnings",
+    "displayName": "Avisos",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "visualizations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "warnings"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "render": {
+      "type": "boolean"
+    }
+  }
+}

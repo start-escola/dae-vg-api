@@ -740,6 +740,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
         minLength: 14;
         maxLength: 14;
       }>;
+    warnings: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::warning.warning'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1202,6 +1207,43 @@ export interface ApiTenderTypeTenderType extends Schema.CollectionType {
   };
 }
 
+export interface ApiWarningWarning extends Schema.CollectionType {
+  collectionName: 'warnings';
+  info: {
+    singularName: 'warning';
+    pluralName: 'warnings';
+    displayName: 'Avisos';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    visualizations: Attribute.Relation<
+      'api::warning.warning',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    render: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::warning.warning',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::warning.warning',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1231,6 +1273,7 @@ declare module '@strapi/types' {
       'api::portal-da-transparencia.portal-da-transparencia': ApiPortalDaTransparenciaPortalDaTransparencia;
       'api::tender.tender': ApiTenderTender;
       'api::tender-type.tender-type': ApiTenderTypeTenderType;
+      'api::warning.warning': ApiWarningWarning;
     }
   }
 }
