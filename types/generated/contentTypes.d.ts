@@ -958,6 +958,47 @@ export interface ApiDiretoriaDiretoria extends Schema.SingleType {
   };
 }
 
+export interface ApiDistrictDistrict extends Schema.CollectionType {
+  collectionName: 'districts';
+  info: {
+    singularName: 'district';
+    pluralName: 'districts';
+    displayName: 'Bairros';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Unique;
+    sectors: Attribute.Relation<
+      'api::district.district',
+      'manyToMany',
+      'api::sectors.sectors'
+    >;
+    logs: Attribute.Relation<
+      'api::district.district',
+      'manyToOne',
+      'api::supply-status-log.supply-status-log'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::district.district',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::district.district',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGalleryGallery extends Schema.SingleType {
   collectionName: 'galleries';
   info: {
@@ -1119,6 +1160,99 @@ export interface ApiPortalDaTransparenciaPortalDaTransparencia
   };
 }
 
+export interface ApiSectorsSectors extends Schema.CollectionType {
+  collectionName: 'sector';
+  info: {
+    singularName: 'sectors';
+    pluralName: 'sector';
+    displayName: 'Setores';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    registros_de_situacoes: Attribute.Relation<
+      'api::sectors.sectors',
+      'oneToMany',
+      'api::supply-status-log.supply-status-log'
+    >;
+    districts: Attribute.Relation<
+      'api::sectors.sectors',
+      'manyToMany',
+      'api::district.district'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sectors.sectors',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sectors.sectors',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSupplyStatusLogSupplyStatusLog
+  extends Schema.CollectionType {
+  collectionName: 'supply_status_logs';
+  info: {
+    singularName: 'supply-status-log';
+    pluralName: 'supply-status-logs';
+    displayName: 'Registros de Situa\u00E7\u00F5es';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    description: Attribute.Text;
+    setor: Attribute.Relation<
+      'api::supply-status-log.supply-status-log',
+      'manyToOne',
+      'api::sectors.sectors'
+    >;
+    situation: Attribute.Enumeration<
+      ['Previs\u00E3o', 'Em andamento', 'Ocorr\u00EAncia', 'Finalizado']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Previs\u00E3o'>;
+    districts: Attribute.Relation<
+      'api::supply-status-log.supply-status-log',
+      'oneToMany',
+      'api::district.district'
+    >;
+    relacao_de_abastecimento: Attribute.Relation<
+      'api::supply-status-log.supply-status-log',
+      'manyToOne',
+      'api::water-supply-relationship.water-supply-relationship'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::supply-status-log.supply-status-log',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::supply-status-log.supply-status-log',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTenderTender extends Schema.CollectionType {
   collectionName: 'tenders';
   info: {
@@ -1244,6 +1378,50 @@ export interface ApiWarningWarning extends Schema.CollectionType {
   };
 }
 
+export interface ApiWaterSupplyRelationshipWaterSupplyRelationship
+  extends Schema.CollectionType {
+  collectionName: 'water_supply_relationships';
+  info: {
+    singularName: 'water-supply-relationship';
+    pluralName: 'water-supply-relationships';
+    displayName: 'Rela\u00E7\u00E3o de Abastecimento';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    date: Attribute.Date & Attribute.Unique;
+    sectors: Attribute.Component<'section.sector', true> &
+      Attribute.SetMinMax<
+        {
+          max: 3;
+        },
+        number
+      >;
+    registros_de_situacoes: Attribute.Relation<
+      'api::water-supply-relationship.water-supply-relationship',
+      'oneToMany',
+      'api::supply-status-log.supply-status-log'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::water-supply-relationship.water-supply-relationship',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::water-supply-relationship.water-supply-relationship',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1266,14 +1444,18 @@ declare module '@strapi/types' {
       'api::agua-e-esgoto.agua-e-esgoto': ApiAguaEEsgotoAguaEEsgoto;
       'api::contest.contest': ApiContestContest;
       'api::diretoria.diretoria': ApiDiretoriaDiretoria;
+      'api::district.district': ApiDistrictDistrict;
       'api::gallery.gallery': ApiGalleryGallery;
       'api::home.home': ApiHomeHome;
       'api::internal-control.internal-control': ApiInternalControlInternalControl;
       'api::new.new': ApiNewNew;
       'api::portal-da-transparencia.portal-da-transparencia': ApiPortalDaTransparenciaPortalDaTransparencia;
+      'api::sectors.sectors': ApiSectorsSectors;
+      'api::supply-status-log.supply-status-log': ApiSupplyStatusLogSupplyStatusLog;
       'api::tender.tender': ApiTenderTender;
       'api::tender-type.tender-type': ApiTenderTypeTenderType;
       'api::warning.warning': ApiWarningWarning;
+      'api::water-supply-relationship.water-supply-relationship': ApiWaterSupplyRelationshipWaterSupplyRelationship;
     }
   }
 }

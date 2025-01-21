@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supply_status_logs",
+  "info": {
+    "singularName": "supply-status-log",
+    "pluralName": "supply-status-logs",
+    "displayName": "Registros de Situações",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "setor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sectors.sectors",
+      "inversedBy": "registros_de_situacoes"
+    },
+    "situation": {
+      "type": "enumeration",
+      "enum": [
+        "Previsão",
+        "Em andamento",
+        "Ocorrência",
+        "Finalizado"
+      ],
+      "required": true,
+      "default": "Previsão"
+    },
+    "districts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::district.district",
+      "mappedBy": "logs"
+    },
+    "relacao_de_abastecimento": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::water-supply-relationship.water-supply-relationship",
+      "inversedBy": "registros_de_situacoes"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sector",
+  "info": {
+    "singularName": "sectors",
+    "pluralName": "sector",
+    "displayName": "Setores",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "registros_de_situacoes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::supply-status-log.supply-status-log",
+      "mappedBy": "setor"
+    },
+    "districts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::district.district",
+      "mappedBy": "sectors"
+    }
+  }
+}

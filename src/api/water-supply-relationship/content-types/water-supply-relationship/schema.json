@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "water_supply_relationships",
+  "info": {
+    "singularName": "water-supply-relationship",
+    "pluralName": "water-supply-relationships",
+    "displayName": "Relação de Abastecimento",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "date",
+      "unique": true
+    },
+    "sectors": {
+      "displayName": "sector",
+      "type": "component",
+      "repeatable": true,
+      "component": "section.sector",
+      "max": 3
+    },
+    "registros_de_situacoes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::supply-status-log.supply-status-log",
+      "mappedBy": "relacao_de_abastecimento"
+    }
+  }
+}

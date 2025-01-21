@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "districts",
+  "info": {
+    "singularName": "district",
+    "pluralName": "districts",
+    "displayName": "Bairros",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true
+    },
+    "sectors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sectors.sectors",
+      "inversedBy": "districts"
+    },
+    "logs": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::supply-status-log.supply-status-log",
+      "inversedBy": "districts"
+    }
+  }
+}

@@ -94,6 +94,22 @@ export interface SectionPagetitle extends Schema.Component {
   };
 }
 
+export interface SectionSector extends Schema.Component {
+  collectionName: 'components_section_sectors';
+  info: {
+    displayName: 'sector';
+    description: '';
+  };
+  attributes: {
+    sectors: Attribute.Relation<
+      'section.sector',
+      'oneToMany',
+      'api::sectors.sectors'
+    >;
+    turno: Attribute.Enumeration<['Manh\u00E3', 'Tarde', 'Noite']>;
+  };
+}
+
 export interface SectionSublink extends Schema.Component {
   collectionName: 'components_section_sublinks';
   info: {
@@ -130,6 +146,7 @@ declare module '@strapi/types' {
       'section.index-banner-card': SectionIndexBannerCard;
       'section.link': SectionLink;
       'section.pagetitle': SectionPagetitle;
+      'section.sector': SectionSector;
       'section.sublink': SectionSublink;
       'tender.status': TenderStatus;
     }

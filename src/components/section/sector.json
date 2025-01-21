@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_section_sectors",
+  "info": {
+    "displayName": "sector",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sectors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sectors.sectors"
+    },
+    "turno": {
+      "type": "enumeration",
+      "enum": [
+        "Manhã",
+        "Tarde",
+        "Noite"
+      ]
+    }
+  }
+}
