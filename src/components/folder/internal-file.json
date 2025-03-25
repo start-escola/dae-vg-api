@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_folder_internal_files",
+  "info": {
+    "displayName": "InternalFile",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

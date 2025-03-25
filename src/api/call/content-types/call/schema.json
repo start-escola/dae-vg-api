@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "calls",
+  "info": {
+    "singularName": "call",
+    "pluralName": "calls",
+    "displayName": "Chamadas",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "entity": {
+      "type": "string",
+      "unique": true
+    },
+    "protocol": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "callerNumber": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Em andamento",
+        "Finalizada"
+      ]
+    },
+    "attendant": {
+      "type": "string"
+    },
+    "callStartTime": {
+      "type": "datetime"
+    },
+    "callEndTime": {
+      "type": "datetime"
+    }
+  }
+}

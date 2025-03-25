@@ -884,6 +884,34 @@ export interface ApiAguaEEsgotoAguaEEsgoto extends Schema.SingleType {
   };
 }
 
+export interface ApiCallCall extends Schema.CollectionType {
+  collectionName: 'calls';
+  info: {
+    singularName: 'call';
+    pluralName: 'calls';
+    displayName: 'Chamadas';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    entity: Attribute.String & Attribute.Unique;
+    protocol: Attribute.String & Attribute.Required & Attribute.Unique;
+    callerNumber: Attribute.String;
+    status: Attribute.Enumeration<['Em andamento', 'Finalizada']>;
+    attendant: Attribute.String;
+    callStartTime: Attribute.DateTime;
+    callEndTime: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::call.call', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::call.call', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiContestContest extends Schema.CollectionType {
   collectionName: 'contests';
   info: {
@@ -1060,21 +1088,25 @@ export interface ApiInternalControlInternalControl
     singularName: 'internal-control';
     pluralName: 'internal-controls';
     displayName: 'Controle Interno';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'rich';
-        }
-      >;
     files: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    name: Attribute.String;
+    parent: Attribute.Relation<
+      'api::internal-control.internal-control',
+      'manyToOne',
+      'api::internal-control.internal-control'
+    >;
+    subfolders: Attribute.Relation<
+      'api::internal-control.internal-control',
+      'oneToMany',
+      'api::internal-control.internal-control'
+    >;
+    slug: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1442,6 +1474,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::about-us.about-us': ApiAboutUsAboutUs;
       'api::agua-e-esgoto.agua-e-esgoto': ApiAguaEEsgotoAguaEEsgoto;
+      'api::call.call': ApiCallCall;
       'api::contest.contest': ApiContestContest;
       'api::diretoria.diretoria': ApiDiretoriaDiretoria;
       'api::district.district': ApiDistrictDistrict;

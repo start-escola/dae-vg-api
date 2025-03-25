@@ -22,7 +22,8 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
     "strapi-provider-email-brevo": "^1.0.4",
-    "styled-components": "5.3.3"
+    "styled-components": "5.3.3",
+    "ws": "^8.18.1"
   },
   "author": {
     "name": "A Strapi developer"
@@ -34,5 +35,8 @@
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/ws": "^8.18.0"
+  }
 }

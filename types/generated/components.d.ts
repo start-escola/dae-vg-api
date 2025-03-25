@@ -1,5 +1,16 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface FolderInternalFile extends Schema.Component {
+  collectionName: 'components_folder_internal_files';
+  info: {
+    displayName: 'InternalFile';
+    description: '';
+  };
+  attributes: {
+    file: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
 export interface SectionAboutUsValues extends Schema.Component {
   collectionName: 'components_section_about_us_values';
   info: {
@@ -139,6 +150,7 @@ export interface TenderStatus extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'folder.internal-file': FolderInternalFile;
       'section.about-us-values': SectionAboutUsValues;
       'section.diretoria-card': SectionDiretoriaCard;
       'section.img': SectionImg;
