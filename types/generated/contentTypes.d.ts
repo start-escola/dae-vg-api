@@ -1159,6 +1159,43 @@ export interface ApiNewNew extends Schema.CollectionType {
   };
 }
 
+export interface ApiPaymentPayment extends Schema.CollectionType {
+  collectionName: 'payments';
+  info: {
+    singularName: 'payment';
+    pluralName: 'payments';
+    displayName: 'Pagamentos';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    empresa: Attribute.String;
+    numero_nota_fiscal: Attribute.String;
+    valor: Attribute.String;
+    data_liquidacao: Attribute.Date;
+    data_emissao_nf_proc: Attribute.Date;
+    data_vencimento: Attribute.Date;
+    data_pagamento: Attribute.Date;
+    justificativa: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::payment.payment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::payment.payment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPortalDaTransparenciaPortalDaTransparencia
   extends Schema.SingleType {
   collectionName: 'portal_da_transparencias';
@@ -1482,6 +1519,7 @@ declare module '@strapi/types' {
       'api::home.home': ApiHomeHome;
       'api::internal-control.internal-control': ApiInternalControlInternalControl;
       'api::new.new': ApiNewNew;
+      'api::payment.payment': ApiPaymentPayment;
       'api::portal-da-transparencia.portal-da-transparencia': ApiPortalDaTransparenciaPortalDaTransparencia;
       'api::sectors.sectors': ApiSectorsSectors;
       'api::supply-status-log.supply-status-log': ApiSupplyStatusLogSupplyStatusLog;

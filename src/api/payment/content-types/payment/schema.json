@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Pagamentos"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "empresa": {
+      "type": "string"
+    },
+    "numero_nota_fiscal": {
+      "type": "string"
+    },
+    "valor": {
+      "type": "string"
+    },
+    "data_liquidacao": {
+      "type": "date"
+    },
+    "data_emissao_nf_proc": {
+      "type": "date"
+    },
+    "data_vencimento": {
+      "type": "date"
+    },
+    "data_pagamento": {
+      "type": "date"
+    },
+    "justificativa": {
+      "type": "text"
+    }
+  }
+}
