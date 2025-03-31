@@ -12,7 +12,7 @@ WORKDIR /opt/app
 COPY . .
 
 ARG BASE_URL
-ENV BASE_URL=${BASE_URL}
+ENV BASE_URL=https://daevg.com.br/cms
 
 RUN yarn build
 
